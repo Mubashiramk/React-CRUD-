@@ -1,4 +1,5 @@
 import USERS from "./data/users.json";
+const { faker } = require("@faker-js/faker");
 
 export const userLogin = (email, firstName) => {
   return new Promise((resolve, reject) => {
@@ -19,7 +20,6 @@ export const userLogin = (email, firstName) => {
           },
         },
       };
-      // console.log(res);
       setTimeout(() => resolve(res), 250);
     } else {
       res = {
@@ -70,5 +70,60 @@ export const getUser = (id) => {
       // console.log(res);
       setTimeout(() => resolve(res), 250);
     }
+  });
+};
+
+export const deleteUser = (id) => {
+  return new Promise((resolve, reject) => {
+    let found = true;
+    for (var k in id) {
+      const requiredIndex = USERS.findIndex((item) => {
+        return item.id == id;
+      });
+      // delete USERS[requiredIndex];
+      USERS.splice(requiredIndex, 1);
+      if (requiredIndex === -1) {
+        found = false;
+      }
+    }
+    if (found === false) {
+      let res = {
+        data: { status: "Failed" },
+      };
+      setTimeout(() => reject(new Error(res)), 250);
+    } else {
+      let res = { data: { status: "Success" } };
+
+      setTimeout(() => resolve(res), 250);
+    }
+  });
+};
+
+export const addUser = (item) => {
+  return new Promise((resolve, reject) => {
+    if (!USERS) {
+      setTimeout(() => reject(new Error("No users found")), 250);
+    }
+    let data = { ...item, id: faker.datatype.number() };
+    USERS.push(data);
+    let res = { data: { status: "Success" } };
+    setTimeout(() => resolve(res), 250);
+  });
+};
+
+export const updateUser = (data) => {
+  return new Promise((resolve, reject) => {
+    if (!USERS) {
+      setTimeout(() => reject(new Error("No users found")), 250);
+    }
+    const requiredIndex = USERS.findIndex((item) => {
+      return item.id == data.id;
+    });
+    USERS[requiredIndex].firstName = data.firstName;
+    USERS[requiredIndex].lastName = data.lastName;
+    USERS[requiredIndex].email = data.email;
+    USERS[requiredIndex].avatar = data.avatar;
+    let res = { data: { status: "Success" } };
+    setTimeout(() => resolve(res), 250);
   });
 };
