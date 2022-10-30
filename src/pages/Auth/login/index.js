@@ -78,9 +78,9 @@ const Login = () => {
                   @
                 </label>
               </div>
-              <div class="w-full border-b-2 border-slate-50 border-solid bo">
+              <div class="w-full border-b-2 border-solid border-gray-100  ">
                 <input
-                  class=" w-full h-10 py-2 px-4 text-sm border-b-1 text-gray-700 bg-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  class=" w-full h-10 py-2 px-4 text-sm outline-none border-none border-b-2 text-gray-700 bg-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   placeholder="Email"
                   type="email"
                   {...register("email")}
@@ -90,15 +90,15 @@ const Login = () => {
             <div class="md:flex md:items-center mb-6">
               <div class="">
                 <label
-                  class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+                  class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 text-left"
                   for="inline-password"
                 >
                   <BsPerson />
                 </label>
               </div>
-              <div class="w-full border-b-2 border-slate-50 border-solid bo">
+              <div class="w-full border-b-2 border-solid border-gray-100 ">
                 <input
-                  class=" w-full h-10 py-2 px-4 text-sm border-b-1 text-gray-700 bg-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  class="w-full h-10 py-2 px-4 text-sm outline-none border-none border-b-2 text-gray-700 bg-white leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   placeholder="First name"
                   type="text"
                   {...register("firstName")}
