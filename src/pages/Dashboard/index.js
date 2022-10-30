@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [delete1, setDelete] = useState(false);
   let [deleteres, setDeleteres] = useState([]);
   const [model, setModel] = useState(false);
-  const tableHead = ["", "ID", "first Name", "Last Name", "Email", "Action"];
+  const tableHead = ["ID", "first Name", "Last Name", "Email", "Action"];
   let [popupAction, setPopupAction] = useState("");
 
   const usersListFunction = async (data) => {
@@ -101,17 +101,17 @@ const Dashboard = () => {
           <div>
             <button
               class="flex text-sm text-white bg-[#464ce9] px-3 py-2 rounded-md"
-              onClick={handleAddUser}
+              onClick={() => deleteItem(isChecked)}
             >
-              <MdAdd class="h-5 w-5" /> Add Users
+              <MdAdd class="h-5 w-5" /> delete Users
             </button>
           </div>
           <div>
             <button
               class="flex text-sm text-white bg-[#464ce9] px-3 py-2 rounded-md"
-              onClick={() => deleteItem(isChecked)}
+              onClick={handleAddUser}
             >
-              <MdAdd class="h-5 w-5" /> delete Users
+              <MdAdd class="h-5 w-5" /> Add Users
             </button>
           </div>
         </div>
